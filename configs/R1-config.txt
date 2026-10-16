@@ -1,0 +1,14 @@
+ip route 192.168.5.192 255.255.255.240 192.168.5.226
+ip route 192.168.5.208 255.255.255.240 192.168.5.226
+
+interface gigabitEthernet 0/1
+    ip address 192.168.5.190 255.255.255.192
+    no shutdown
+
+interface gigabitEthernet 0/2
+    ip address 192.168.5.126 255.255.255.128
+    no shutdown
+
+interface gigabitEthernet 0/0/0
+    ip address 192.168.5.225 255.255.255.252
+    no shutdown

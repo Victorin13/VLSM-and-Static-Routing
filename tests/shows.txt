@@ -1,0 +1,61 @@
+R1#sh ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     192.168.5.0/24 is variably subnetted, 8 subnets, 5 masks
+C       192.168.5.0/25 is directly connected, GigabitEthernet0/2
+L       192.168.5.126/32 is directly connected, GigabitEthernet0/2
+C       192.168.5.128/26 is directly connected, GigabitEthernet0/1
+L       192.168.5.190/32 is directly connected, GigabitEthernet0/1
+S       192.168.5.192/28 [1/0] via 192.168.5.226
+S       192.168.5.208/28 [1/0] via 192.168.5.226
+C       192.168.5.224/30 is directly connected, GigabitEthernet0/0/0
+L       192.168.5.225/32 is directly connected, GigabitEthernet0/0/0
+
+R1#sh ip int br
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     unassigned      YES NVRAM  administratively down down 
+GigabitEthernet0/1     192.168.5.190   YES manual up                    up 
+GigabitEthernet0/2     192.168.5.126   YES manual up                    up 
+GigabitEthernet0/0/0   192.168.5.225   YES manual up                    up 
+Vlan1                  unassigned      YES unset  administratively down down
+R1#
+
+
+
+R2#sh ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     192.168.5.0/24 is variably subnetted, 8 subnets, 5 masks
+S       192.168.5.0/25 [1/0] via 192.168.5.225
+S       192.168.5.128/26 [1/0] via 192.168.5.225
+C       192.168.5.192/28 is directly connected, GigabitEthernet0/1
+L       192.168.5.206/32 is directly connected, GigabitEthernet0/1
+C       192.168.5.208/28 is directly connected, GigabitEthernet0/2
+L       192.168.5.222/32 is directly connected, GigabitEthernet0/2
+C       192.168.5.224/30 is directly connected, GigabitEthernet0/0/0
+L       192.168.5.226/32 is directly connected, GigabitEthernet0/0/0
+
+R2#sh ip int br
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     unassigned      YES NVRAM  administratively down down 
+GigabitEthernet0/1     192.168.5.206   YES manual up                    up 
+GigabitEthernet0/2     192.168.5.222   YES manual up                    up 
+GigabitEthernet0/0/0   192.168.5.226   YES manual up                    up 
+Vlan1                  unassigned      YES unset  administratively down down
+R2#
